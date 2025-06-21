@@ -4,6 +4,10 @@ const cors = require("cors");
 require("dotenv").config();
 const { PrismaClient } = require("@prisma/client");
 
+// Importing the routes
+const userRoutes = require("./routes/userRoutes");
+const jobRoutes = require("./routes/jobRoutes");
+
 // Initializing the app and Prisma
 const app = express();
 const prisma = new PrismaClient();
@@ -11,6 +15,10 @@ const prisma = new PrismaClient();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Use routes
+app.use("/api/users", userRoutes); // for signups/login
+app.use("api/jobs", jobRoutes);    // for job management
 
 // Routes
 app.get("/", (req, res) => {
