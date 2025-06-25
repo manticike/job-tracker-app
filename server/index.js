@@ -18,7 +18,7 @@ app.use(express.json());
 
 // Use routes
 app.use("/api/users", userRoutes); // for signups/login
-app.use("api/jobs", jobRoutes);    // for job management
+app.use("/api/jobs", jobRoutes);    // for job management
 
 // Routes
 app.get("/", (req, res) => {
